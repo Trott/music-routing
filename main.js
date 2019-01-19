@@ -26,7 +26,6 @@ function createWorker (id, index) {
 let matches
 
 function callback (data) {
-  console.log(`got generation ${data.tracks.length} from worker ${data.index}`)
   tracks[data.index] = data.tracks
   individuals[data.index] = data.individuals
   matches = matchFound(tracks[0], tracks[1])
