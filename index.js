@@ -10,8 +10,8 @@ const individuals2 = []
 const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
-const id1 = process.argv[2] || '12' // Rich Trott
-const id2 = process.argv[3] || '8992' // Rob Fioretti
+const id1 = process.argv[2] || '27' // Carrie Brownstein
+const id2 = process.argv[3] || '40' // Michael Jackson
 
 console.time('search duration')
 
