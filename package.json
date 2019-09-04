@@ -4,6 +4,7 @@
   "description": "Solver for Six Degrees Of Kevin Bacon, but for music",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.17.1",
     "music-routes-data": "^1.0.3",
     "music-routes-search": "^2.0.0"
   },
