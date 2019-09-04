@@ -11,7 +11,7 @@ const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'))
+  res.sendFile(path.join(__dirname, 'views', '/index.html'))
 })
 
 app.get('/go', function (req, res) {
@@ -124,4 +124,4 @@ function searchForMusician (searchString) {
   return result[0]
 }
 
-app.listen(8080)
+app.listen(process.env.PORT || 8080)
