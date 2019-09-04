@@ -35,8 +35,8 @@ while (!matches.length) {
 
 console.timeEnd('search duration')
 
-let index1 = tracks1.length - 1
-let index2 = tracks2.length - 1
+const index1 = tracks1.length - 1
+const index2 = tracks2.length - 1
 // Select a random track from the list of tracks that connect the two individuals
 let track = sample(matches)
 let fromIndividual = sample(Array.from(individuals1[index1]).filter((ind) => individualTrack.some((it) => it.individual_id === ind && it.track_id === track)))
