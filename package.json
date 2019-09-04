@@ -2,15 +2,21 @@
   "name": "music-routing",
   "version": "1.0.0",
   "description": "Solver for Six Degrees Of Kevin Bacon, but for music",
-  "main": "index.js",
+  "main": "server.js",
   "dependencies": {
-    "music-routes-data": "^1.0.3"
+    "express": "^4.17.1",
+    "music-routes-data": "^1.0.3",
+    "music-routes-search": "^2.0.0"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "devDependencies": {
-    "standard": "^12.0.1"
+    "standard": "^14.1.0"
   },
   "scripts": {
-    "test": "standard --fix"
+    "test": "standard --fix",
+    "start": "node server.js"
   },
   "author": "Rich Trott <rtrott@gmail.com>",
   "license": "MIT"

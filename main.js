@@ -52,8 +52,8 @@ workers[1] = createWorker(id1, 1)
 
 function printResults () {
   let track = sample(matches)
-  let index0 = tracks[0].length - 1
-  let index1 = tracks[1].length - 1
+  const index0 = tracks[0].length - 1
+  const index1 = tracks[1].length - 1
   let fromIndividual = sample(Array.from(individuals[0][index0]).filter((ind) => individualTrack.some((it) => it.individual_id === ind && it.track_id === track)))
   let toIndividual = sample(Array.from(individuals[1][index1]).filter((ind) => individualTrack.some((it) => it.individual_id === ind && it.track_id === track)))
 
