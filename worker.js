@@ -1,36 +1,35 @@
 'use strict'
 
 const { parentPort, workerData } = require('worker_threads')
+const { id } = workerData
 
 const individualTrack = require('music-routes-data/data/individual_track.json')
 
 const tracks = []
 const individuals = []
 
-const { id, index } = workerData
-
 tracks[0] = getTracksForIndividual(id)
 individuals[0] = new Set([id])
 
-parentPort.postMessage({ tracks, individuals, index })
+parentPort.postMessage({ tracks, individuals })
 parentPort.on('message', (msg) => {
   if (msg === 'next') {
-    getNextGeneration(tracks, individuals)
-    parentPort.postMessage({ tracks, individuals, index })
+    getNextBfsStepResults(tracks, individuals)
+    parentPort.postMessage({ tracks, individuals })
     return
   }
   throw new Error(`Unknown message: ${msg}`)
 })
 
-function getNextGeneration (tracks, individuals) {
-  const currGenTracks = tracks[tracks.length - 1]
-  const currGenIndividuals = individuals[individuals.length - 1]
-  const resultTracks = new Set(currGenTracks)
-  const resultIndividuals = new Set(currGenIndividuals)
-  currGenTracks.forEach((trackId) => {
+function getNextBfsStepResults (tracks, individuals) {
+  const currTracks = tracks[tracks.length - 1]
+  const currIndividuals = individuals[individuals.length - 1]
+  const resultTracks = new Set(currTracks)
+  const resultIndividuals = new Set(currIndividuals)
+  currTracks.forEach((trackId) => {
     const individuals = getIndividualsForTrack(trackId)
     individuals.forEach((individualId) => {
-      if (currGenIndividuals.has(individualId)) {
+      if (currIndividuals.has(individualId)) {
         return
       }
       resultIndividuals.add(individualId)
