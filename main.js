@@ -13,8 +13,8 @@ const workers = []
 const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
-const id0 = process.argv[2] || '27' // Carrie Brownstein
-const id1 = process.argv[3] || '40' // Michael Jackson
+const id0 = process.argv[2] || '40' // Michael Jackson
+const id1 = process.argv[3] || '27' // Carrie Brownstein
 
 function createWorker (id, index) {
   const worker = new Worker('./worker.js', { workerData: { id, index } })
