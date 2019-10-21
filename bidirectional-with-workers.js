@@ -8,47 +8,46 @@ const individualTrack = require('music-routes-data/data/individual_track.json')
 
 const tracks = [[], []]
 const individuals = [[], []]
-const workers = []
 
 const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
-const id0 = process.argv[2] || '40' // Michael Jackson
-const id1 = process.argv[3] || '27' // Carrie Brownstein
+const startId = process.argv[2] || '1765' // Aretha Franklin
+const targetId = process.argv[3] || '27' // Carrie Brownstein
 
 function createWorker (id, index) {
-  const worker = new Worker('./worker.js', { workerData: { id, index } })
+  const worker = new Worker('./worker.js', { workerData: { id } })
   worker.on('error', (err) => { throw err })
-  worker.on('message', callback)
+  worker.on('message', callback.bind(worker, index))
   return worker
 }
 
 let matches
 
-function callback (data) {
-  tracks[data.index] = data.tracks
-  individuals[data.index] = data.individuals
+function callback (index, data) {
+  tracks[index] = data.tracks
+  individuals[index] = data.individuals
   matches = matchFound(tracks[0], tracks[1])
   if (matches.length) {
     done()
   } else {
-    workers[data.index].postMessage('next')
+    this.postMessage('next')
   }
 }
 
 function done () {
   console.timeEnd('search duration')
-  workers[0].removeListener('message', callback)
-  workers[1].removeListener('message', callback)
-  workers[0].unref()
-  workers[1].unref()
+  workerForStart.removeListener('message', callback)
+  workerForTarget.removeListener('message', callback)
+  workerForStart.terminate()
+  workerForTarget.terminate()
   printResults()
 }
 
 console.time('search duration')
 
-workers[0] = createWorker(id0, 0)
-workers[1] = createWorker(id1, 1)
+const workerForStart = createWorker(startId, 0)
+const workerForTarget = createWorker(targetId, 1)
 
 function printResults () {
   let track = sample(matches)

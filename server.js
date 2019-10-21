@@ -42,30 +42,30 @@ app.get('/go', function (req, res) {
   workers[1] = createWorker(end.ref, 1)
 
   function createWorker (id, index) {
-    const worker = new Worker('./worker.js', { workerData: { id, index } })
+    const worker = new Worker('./worker.js', { workerData: { id } })
     worker.on('error', (err) => { res.end(`oh noes! ${err}`) })
-    worker.on('message', callback)
+    worker.on('message', callback.bind(this, index))
     return worker
   }
 
   let matches
 
-  function callback (data) {
-    tracks[data.index] = data.tracks
-    individuals[data.index] = data.individuals
+  function callback (index, data) {
+    tracks[index] = data.tracks
+    individuals[index] = data.individuals
     matches = matchFound(tracks[0], tracks[1])
     if (matches.length) {
       done()
     } else {
-      workers[data.index].postMessage('next')
+      workers[index].postMessage('next')
     }
   }
 
   function done () {
     workers[0].removeListener('message', callback)
     workers[1].removeListener('message', callback)
-    workers[0].unref()
-    workers[1].unref()
+    workers[0].terminate()
+    workers[1].terminate()
     printResults()
   }
 
@@ -124,4 +124,11 @@ function searchForMusician (searchString) {
   return result[0]
 }
 
-app.listen(process.env.PORT || 8080)
+const port = process.env.PORT || 8080
+app.listen(port, (err) => {
+  // TODO: offline right now, check that `err` is even a thing here
+  if (err) {
+    throw err
+  }
+  console.log(`Now serving at http://localhost:${port}/.`)
+})
