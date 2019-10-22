@@ -15,14 +15,19 @@ const id2 = process.argv[3] || '27' // Carrie Brownstein
 
 console.time('search duration')
 
+// The index in these arrays represent how many steps away from the start
+// individual. Initialize at zero steps.
 startTracksBfsResults[0] = getTracksForIndividual(id1)
 startIndividualsBfsResults[0] = new Set([id1])
 
+// The index here is how many steps away from the target individual.
 targetTracksBfsResults[0] = getTracksForIndividual(id2)
 targetIndividualsBfsResults[0] = new Set([id2])
 
+// Check if the two individuals have any tracks in common.
 let matches = matchFound(startTracksBfsResults, targetTracksBfsResults)
 
+// Keep getting more individuals/tracks until there is a match.
 while (!matches.length) {
   getNextBfsStepResults(startTracksBfsResults, startIndividualsBfsResults)
   matches = matchFound(startTracksBfsResults, targetTracksBfsResults)
