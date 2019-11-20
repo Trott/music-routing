@@ -103,7 +103,7 @@ app.get('/go', function (req, res) {
       const from = allIndividuals.find((ind) => ind._id === node.fromIndividual).names[0]
       const track = allTracks.find((trk) => trk._id === node.track).names[0]
       const to = allIndividuals.find((ind) => ind._id === node.toIndividual).names[0]
-      res.write(`${from} played on "${track}" with ${to}\n`)
+      res.write(`<b>${escape(from)}</b> played on "${escape(track)}" with <b>${escape(to)}</b><br>\n`)
     })
     res.end()
   }
