@@ -2,16 +2,19 @@
 
 const express = require('express')
 const { search } = require('music-routes-search')
-var app = express()
-var path = require('path')
+const app = express()
+const fs = require('fs')
+const path = require('path')
 const { Worker } = require('worker_threads')
 
 const individualTrack = require('music-routes-data/data/individual_track.json')
 const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
+const indexHtml = fs.readFileSync(path.join(__dirname, 'views', '/index.html'))
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'views', '/index.html'))
+  res.send(indexHtml.toString())
 })
 
 app.get('/go', function (req, res) {
