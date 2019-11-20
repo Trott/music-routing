@@ -2,6 +2,7 @@
 
 const express = require('express')
 const { search } = require('music-routes-search')
+const escape = require('escape-html')
 const app = express()
 const fs = require('fs')
 const path = require('path')
@@ -14,25 +15,23 @@ const allTracks = require('music-routes-data/data/tracks.json')
 const indexHtml = fs.readFileSync(path.join(__dirname, 'views', '/index.html'))
 
 app.get('/', function (req, res) {
-  res.send(indexHtml.toString())
+  return res.send(indexHtml.toString())
 })
 
 app.get('/go', function (req, res) {
-  res.set({ 'content-type': 'application/json; charset=utf-8' })
-
   if (!req.query.start || !req.query.end) {
-    return res.end('Missing start or end. Please try again.')
+    return res.send('Missing start or end. Please try again.')
   }
 
   // TODO: Put the search stuff in workers too.
   const start = searchForMusician(req.query.start)
   if (!start) {
-    return res.end(`Could not find ${req.query.start}. Sorry! The data set is limited.`)
+    return res.send(`Could not find <b>${escape(req.query.start)}</b>. Sorry! The data set is limited.`)
   }
 
   const end = searchForMusician(req.query.end)
   if (!end) {
-    return res.end(`Could not find ${req.query.end}. Sorry! The data set is limited.`)
+    return res.send(`Could not find <b>${escape(req.query.end)}</b>. Sorry! The data set is limited.`)
   }
 
   // TODO: Use worker pooling rather than creating two new workers for every request.
