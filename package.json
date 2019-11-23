@@ -17,7 +17,7 @@
   },
   "scripts": {
     "lint-fix": "standard --fix",
-    "test": "standard && node bfs-single-thread.js && node bidirectional-single-thread.js && node bidirectional-with-workers.js",
+    "test": "standard && node bfs-single-thread.js 1 2 && node bidirectional-single-thread.js && node bidirectional-with-workers.js",
     "start": "node server.js"
   },
   "author": "Rich Trott <rtrott@gmail.com>",
