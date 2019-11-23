@@ -14,6 +14,11 @@ const allTracks = require('music-routes-data/data/tracks.json')
 
 const indexHtml = fs.readFileSync(path.join(__dirname, 'views', '/index.html'))
 
+app.use(function (req, res, next) {
+  res.header('Content-Type', 'text/html; charset=utf-8')
+  next()
+})
+
 app.get('/', function (req, res) {
   return res.send(indexHtml.toString())
 })
