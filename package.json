@@ -6,14 +6,14 @@
   "dependencies": {
     "escape-html": "^1.0.3",
     "express": "^4.17.1",
-    "music-routes-data": "^1.0.3",
+    "music-routes-data": "^1.0.4",
     "music-routes-search": "^2.0.0"
   },
   "engines": {
     "node": "12.x"
   },
   "devDependencies": {
-    "standard": "^14.1.0"
+    "standard": "^14.3.1"
   },
   "scripts": {
     "lint-fix": "standard --fix",
