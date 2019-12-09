@@ -108,9 +108,13 @@ app.get('/go', function (req, res) {
       const from = allIndividuals.find((ind) => ind._id === node.fromIndividual).names[0]
       const track = allTracks.find((trk) => trk._id === node.track).names[0]
       const to = allIndividuals.find((ind) => ind._id === node.toIndividual).names[0]
-      res.write(`<b>${escape(from)}</b> played on "${escape(track)}" with <b>${escape(to)}</b><br>\n`)
+      res.write(`${visualizerAnchor(from, node.fromIndividual)} played on "${escape(track)}" with ${visualizerAnchor(to, node.toIndividual)}<br>\n`)
     })
     res.end()
+  }
+
+  function visualizerAnchor (name, id) {
+    return `<a href="https://trott.github.io/music-routes-visualization/?${escape(id)}">${escape(name)}</a>`
   }
 
   function sample (set) {
