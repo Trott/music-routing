@@ -1,6 +1,6 @@
 {
   "name": "music-routing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Solver for Six Degrees Of Kevin Bacon, but for music",
   "main": "server.js",
   "dependencies": {
