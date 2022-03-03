@@ -10,10 +10,10 @@
     "music-routes-search": "^2.0.1"
   },
   "engines": {
-    "node": "12.x"
+    "node": ">=12.x"
   },
   "devDependencies": {
-    "standard": "^14.3.1"
+    "standard": "^16.0.4"
   },
   "scripts": {
     "lint-fix": "standard --fix",
