@@ -7,7 +7,7 @@
     "escape-html": "^1.0.3",
     "express": "^4.18.2",
     "music-routes-data": "^1.1.1",
-    "music-routes-search": "^2.2.0"
+    "music-routes-search": "^2.2.1"
   },
   "engines": {
     "node": ">=12.x"
