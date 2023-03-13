@@ -6,7 +6,7 @@
   "dependencies": {
     "escape-html": "^1.0.3",
     "express": "^4.18.2",
-    "music-routes-data": "^1.3.1",
+    "music-routes-data": "^2.0.0",
     "music-routes-search": "^2.2.1"
   },
   "engines": {
