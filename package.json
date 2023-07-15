@@ -12,14 +12,14 @@
   "engines": {
     "node": ">=16.x"
   },
-  "devDependencies": {
-    "standard": "^17.1.0"
-  },
   "scripts": {
     "lint-fix": "standard --fix",
     "test": "standard && node bfs-single-thread.js 1 2 && node bidirectional-single-thread.js && node bidirectional-with-workers.js",
     "start": "node server.js"
   },
   "author": "Rich Trott <rtrott@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "standard": "^17.1.0"
+  }
 }
