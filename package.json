@@ -20,6 +20,6 @@
   "author": "Rich Trott <rtrott@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "standard": "^17.1.0"
+    "standard": "^17.1.2"
   }
 }
