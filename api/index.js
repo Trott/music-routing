@@ -49,7 +49,7 @@ app.get('/go', function (req, res) {
   workers[1] = createWorker(end.ref, 1)
 
   function createWorker (id, index) {
-    const worker = new Worker('./worker.js', { workerData: { id } })
+    const worker = new Worker(path.join(__dirname, '..', '/worker.js'), { workerData: { id } })
     worker.on('error', (err) => { res.end(`oh noes! ${err}`) })
     worker.on('message', callback.bind(this, index))
     return worker
