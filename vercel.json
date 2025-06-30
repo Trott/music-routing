@@ -1,8 +1,2 @@
-{
-    "name": "music-routing",
-    "functions": {
-        "server.js": {
-            "runtime": "@vercel/node@5.1.12"
-        }
-    }
-}
+{ "version": 2, "rewrites": [{ "source": "/(.*)", "destination": "/api" }] }
+

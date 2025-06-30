@@ -12,7 +12,7 @@ const individualTrack = require('music-routes-data/data/individual_track.json')
 const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
-const indexHtml = fs.readFileSync(path.join(__dirname, 'views', '/index.html'))
+const indexHtml = fs.readFileSync(path.join(__dirname, '..', 'views', '/index.html'))
 
 app.use(function (req, res, next) {
   res.header('Content-Type', 'text/html; charset=utf-8')
