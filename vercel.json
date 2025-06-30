@@ -1,0 +1,8 @@
+{
+    "name": "music-routing",
+    "functions": {
+        "server.js": {
+            "runtime": "@vercel/node@5.1.12"
+        }
+    }
+}
