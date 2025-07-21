@@ -10,8 +10,8 @@ const targetIndividualsBfsResults = []
 const allIndividuals = require('music-routes-data/data/individuals.json')
 const allTracks = require('music-routes-data/data/tracks.json')
 
-const startId = process.argv[2] || '1765' // Aretha Franklin
-const targetId = process.argv[3] || '27' // Carrie Brownstein
+const startId = process.argv[2] || 'Aretha Franklin'
+const targetId = process.argv[3] || 'Carrie Brownstein'
 
 console.time('search duration')
 
