@@ -13,4 +13,3 @@ don't know. Pull requests to do that are, of course, welcome.
 
 Run `node index.js` to get a quick CLI overview. Run `npm start` (after you've
 done `npm install` one time) to run a webserver (default localhost port 8080).
-Or just go to https://vintage-bean.glitch.me.
