@@ -11,5 +11,4 @@ An early version of this was used as the demo code in
 I'll probably inch along into something more generally fun/usable. Or not? I
 don't know. Pull requests to do that are, of course, welcome.
 
-Run `node index.js` to get a quick CLI overview. Run `npm start` (after you've
-done `npm install` one time) to run a webserver (default localhost port 8080).
+Run `npm start` (after you've done `npm install` one time) to run a webserver (default localhost port 8080).
