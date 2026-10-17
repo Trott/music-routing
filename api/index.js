@@ -106,9 +106,11 @@ app.get('/go', function (req, res) {
     // Print the list of track names and individuals
     path.forEach((node) => {
       const from = allIndividuals.find((ind) => ind._id === node.fromIndividual).names[0]
-      const track = allTracks.find((trk) => trk._id === node.track).names[0]
+      const track = allTracks.find((trk) => trk._id === node.track)
+      const artist = track.artists.map((artist) => escape(artist.names[0])).join(', ')
+      const release = track.releases.map((release) => `<i>${escape(release.names[0])}</i>`).join(', ')
       const to = allIndividuals.find((ind) => ind._id === node.toIndividual).names[0]
-      res.write(`${visualizerAnchor(from, node.fromIndividual)} played on "${escape(track)}" with ${visualizerAnchor(to, node.toIndividual)}<br>\n`)
+      res.write(`${visualizerAnchor(from, node.fromIndividual)} played on "${escape(track.names[0])}" (${artist}, ${release}) with ${visualizerAnchor(to, node.toIndividual)}<br>\n`)
     })
     res.end()
   }
